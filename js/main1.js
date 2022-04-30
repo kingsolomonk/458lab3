@@ -63,7 +63,7 @@ map.on('load', () => {
         '51-75',
         '76-90',
         '91-99',
-        '100 percent rate'
+        '>= 100 cases'
     ];
     const colors = [
         '#FFEDA070',
