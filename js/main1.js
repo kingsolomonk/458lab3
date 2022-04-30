@@ -12,15 +12,15 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', () => {
-    map.addSource('stateData', {
+    map.addSource('rates', {
         type: 'geojson',
         data: 'assets/us-covid-2020-rates.json'
     });
 
     map.addLayer({
-        'id': 'stateData-layer',
+        'id': 'rates-layer',
         'type': 'fill',
-        'source': 'stateData',
+        'source': 'rates',
         'paint': {
             'fill-color': [
                 'step',
@@ -48,7 +48,7 @@ map.on('load', () => {
 
     map.on('mousemove', ({point}) => {
         const state = map.queryRenderedFeatures(point, {
-            layers: ['stateData-layer']
+            layers: ['rates-layer']
         });
         document.getElementById('text-description').innerHTML = state.length ?
             `<h3>${state[0].properties.county}, ${state[0].properties.state}</h3><p><strong><em>${state[0].properties.rates}</strong> cases per 100,000 (?)</em></p>` :
